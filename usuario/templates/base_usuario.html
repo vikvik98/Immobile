@@ -1,15 +1,19 @@
-{% load staticfiles %}
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="pt">
 <head>
     <meta charset="utf-8">
     <title>Immobile</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/js/bootstrap.min.js' %}">
+    <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
 
 </head>
 <body>
-<div class="container">
-    {% block body %}
-    {% endblock %}
-</div>
+
+                {% block body %}
+                {% endblock %}
+
 </body>
 </html>
