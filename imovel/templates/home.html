@@ -1,0 +1,27 @@
+{% extends "base_imovel.html" %}
+{% load static %}
+{% block body %}
+
+
+<!-- Card -->
+<div class="container container mt-4 mb-5">
+    <h3 class="display-4 text-center"> Imoveis </h3>
+    <hr class="bg-dark mb-4 w-25">
+    <div class="row">
+        {% for imovel in imoveis %}
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'imovel/img/default.jpg' %}" alt="Card image cap">
+                <div class="card-block p-3">
+                    <h4 class="card-title">{{ imovel.nome }}</h4>
+                    <p class="card-text">{{ imovel.descricao }}</p>
+                    <a href="#" class="btn btn-primary rounded-0 mb-2">Detalhes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+<!-- Card -->
+    </div>
+</div>
+
+{% endblock %}
