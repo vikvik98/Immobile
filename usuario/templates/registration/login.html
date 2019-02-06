@@ -1,0 +1,35 @@
+{% extends "base_usuario.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="{% static 'usuario/img/casa.png' %}" id="icon" alt="User Icon"/>
+            <h1>Immobile</h1>
+        </div>
+
+        <!-- Formulário de login -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <input class="fadeIn second form-control input-sm chat-input" type="text" name="username" required
+                   id="id_username" placeholder="nome">
+            <input class="fadeIn third form-control input-sm chat-input" type="password" name="password" required
+                   id="id_password" placeholder="senha">
+
+            <input type="submit" class="fadeIn fourth" value="Login">
+        </form>
+
+        <!-- Registrar -->
+        <div id="formFooter">
+            <a class="underlineHover" href="{% url 'registrar' %}">Registrar</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
