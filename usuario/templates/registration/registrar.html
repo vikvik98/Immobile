@@ -18,25 +18,26 @@
             {% csrf_token %}
 
             {% if form.errors %}
-        <div class="alert alert-danger" style="width:85%;display:inline-block">
-            {% for field in form %}
-            {% if field.errors %}
-            {% for error in field.errors %}
-            <strong>{{ field.html_name }}: </strong> {{ error|escape }}
-            {% endfor %}
+            <div class="alert alert-danger" style="width:85%;display:inline-block;text-align:left">
+                {% for field in form %}
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <strong>{{ field.html_name }}: </strong> {{ error|escape }}
+                <br>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
             {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
 
             <input class="fadeIn second form-control input-sm chat-input" type="text" name="nome" maxlength="50"
-                   required id="id_nome" placeholder="nome">
-            <input class="fadeIn second form-control input-sm chat-input" type="text" name="telefone" maxlength="20"
-                   required id="id_telefone" placeholder="telefone">
+                   minlength="4" required id="id_nome" placeholder="nome">
+            <input class="fadeIn second form-control input-sm chat-input" type="text" name="telefone" maxlength="15"
+                   required id="id_telefone" placeholder="(99) 99999-9999">
             <input class="fadeIn second form-control input-sm chat-input" type="email" name="email" required
                    id="id_email" placeholder="e-mail">
             <input class="fadeIn second form-control input-sm chat-input" type="password" name="senha" maxlength="65"
-                   required id="id_senha" placeholder="senha">
+                   minlength="3" required id="id_senha" placeholder="senha">
 
             <input type="submit" class="fadeIn fourth" value="Registrar">
         </form>
