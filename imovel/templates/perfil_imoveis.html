@@ -10,8 +10,9 @@
     <div class="row">
         {% for imovel in imoveis %}
         <div class="col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'imovel/img/default.jpg' %}" alt="Card image cap">
+            <div class="card mb-4">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ imovel.imagem.url }}" style="height: 200px;"
+                     alt="Card image cap">
                 <div class="card-block p-3">
                     <h4 class="card-title">{{ imovel.nome }}</h4>
                     <p class="card-text">{{ imovel.descricao }}</p>

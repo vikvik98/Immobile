@@ -7,15 +7,15 @@
     <div class="row" style="padding:20px">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div class="form-group">
                     <input autofocus class="form-control" id="id_nome" name="nome" placeholder="Nome" required>
                 </div>
                 <div class="form-group">
-                    <input autofocus class="form-control" id="id_descricao" name="descricao" placeholder="Descricao"
-                           required>
+                    <textarea autofocus class="form-control" id="id_descricao" name="descricao" placeholder="Descricao"
+                              required></textarea>
                 </div>
                 <div class="form-group">
                     <input autofocus class="form-control" id="id_cep" name="cep" placeholder="Cep" required>
@@ -35,6 +35,7 @@
                 <div class="form-group">
                     <input autofocus class="form-control" id="id_estado" name="estado" placeholder="Estado" required>
                 </div>
+                <input type="file" name="imagem" id="id_imagem">
 
                 <div class="form-group">
                     <button class="btn btn-warning btn-block" type="submit">Adicionar</button>
@@ -45,7 +46,7 @@
                     <button aria-hidden="true" class="close"
                             data-dismiss="alert" type="button">
                     </button>
-                    {{ form.non_field_errors }}
+                    {{ form.errors }}
                 </div>
                 {% endif %}
 
