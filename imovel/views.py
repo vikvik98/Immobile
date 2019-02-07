@@ -13,6 +13,16 @@ def home(request):
     return render(request, 'home.html', {'imoveis': imoveis})
 
 
+@login_required
+def item_imovel(request,id_imovel):
+    imovel = Imovel.objects.get(id=id_imovel)
+    return render(request, 'item_imovel.html', {'imovel': imovel})
+
+def perfil_imoveis(request):
+    perfil_logado = get_perfil_logado(request)
+    imoveis = perfil_logado.imoveis.all()
+    return render(request, 'perfil_imoveis.html', {'imoveis': imoveis})
+
 
 class AdicionarImovelView(View):
     template_post = 'adicionar_imovel.html'
@@ -50,3 +60,5 @@ class AdicionarImovelView(View):
 
 def get_perfil_logado(request):
     return request.user.perfil
+
+

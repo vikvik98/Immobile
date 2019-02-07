@@ -15,7 +15,7 @@
                 <div class="card-block p-3">
                     <h4 class="card-title">{{ imovel.nome }}</h4>
                     <p class="card-text">{{ imovel.descricao }}</p>
-                    <a href="#" class="btn btn-primary rounded-0 mb-2">Detalhes</a>
+                    <a href="{% url 'item_imovel' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Detalhes</a>
                 </div>
             </div>
         </div>
