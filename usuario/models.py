@@ -6,7 +6,7 @@ class Perfil(models.Model):
 
     nome = models.CharField(max_length=50)
     telefone = models.CharField(max_length=20)
-    usuario = models.ForeignKey(User, related_name='perfil',
+    usuario = models.OneToOneField(User, related_name='perfil',
                                 on_delete=models.CASCADE)
 
     @property

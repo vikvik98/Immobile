@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -6,7 +7,7 @@ from django.views.generic.base import View
 from imovel.forms import AdicionarImovelForm
 from imovel.models import Imovel
 
-
+@login_required
 def home(request):
     imoveis = Imovel.objects.all()
     return render(request, 'home.html', {'imoveis': imoveis})
@@ -21,8 +22,11 @@ class AdicionarImovelView(View):
 
     def post(self, request):
         adicionar_imovelForm = AdicionarImovelForm(request.POST)
+        perfil_logado = get_perfil_logado(request)
+
 
         if adicionar_imovelForm.is_valid():
+
             imovel = Imovel(nome= adicionar_imovelForm.cleaned_data['nome'],
                             descricao= adicionar_imovelForm.cleaned_data['descricao'],
                             cep= adicionar_imovelForm.cleaned_data['cep'],
@@ -30,8 +34,19 @@ class AdicionarImovelView(View):
                             rua= adicionar_imovelForm.cleaned_data['rua'],
                             bairro= adicionar_imovelForm.cleaned_data['bairro'],
                             cidade= adicionar_imovelForm.cleaned_data['cidade'],
-                            estado= adicionar_imovelForm.cleaned_data['estado'])
+                            estado= adicionar_imovelForm.cleaned_data['estado'],
+                            perfil=perfil_logado)
+
+
+
+
             imovel.save()
+
             return redirect('home')
 
         return render(request, self.template_post, {'form': adicionar_imovelForm})
+
+
+
+def get_perfil_logado(request):
+    return request.user.perfil

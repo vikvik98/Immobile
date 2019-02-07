@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from usuario.models import Perfil
+
 
 class Imovel(models.Model):
     nome = models.CharField(max_length=50)
@@ -11,3 +13,4 @@ class Imovel(models.Model):
     bairro = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
+    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='imoveis')
