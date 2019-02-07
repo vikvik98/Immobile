@@ -1,0 +1,37 @@
+{% extends "base_imovel.html" %}
+{% block body %}
+
+<div class="container container mt-4 mb-5">
+    <h3 class="display-4 text-center" style="margin-top:3.5rem"> Adicionar Proprietario </h3>
+    <hr class="bg-dark mb-4 w-25">
+    <div class="row" style="padding:20px">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form-group">
+                    {{ field }}
+                </div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <button class="btn btn-warning btn-block" type="submit">Adicionar</button>
+                </div>
+
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <button aria-hidden="true" class="close"
+                            data-dismiss="alert" type="button">
+                    </button>
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

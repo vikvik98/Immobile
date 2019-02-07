@@ -1,4 +1,5 @@
 from django.db import models
+
 from usuario.models import Perfil
 
 
@@ -11,5 +12,5 @@ class Imovel(models.Model):
     bairro = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
-    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='imoveis')
+    perfis = models.ManyToManyField(Perfil, related_name='imoveis')
     imagem = models.FileField(upload_to='imovel/', default='imovel/default.jpg')

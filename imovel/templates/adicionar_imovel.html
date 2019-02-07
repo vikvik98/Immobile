@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="container container mt-4 mb-5">
-    <h3 class="display-4 text-center"> Adicionar </h3>
+    <h3 class="display-4 text-center" style="margin-top:3.5rem"> Adicionar </h3>
     <hr class="bg-dark mb-4 w-25">
     <div class="row" style="padding:20px">
         <div class="col-sm-3"></div>
@@ -10,35 +10,42 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
+                {% for field in form %}
                 <div class="form-group">
-                    <input autofocus class="form-control" id="id_nome" name="nome" placeholder="Nome" required>
+                    {{ field }}
                 </div>
-                <div class="form-group">
-                    <textarea autofocus class="form-control" id="id_descricao" name="descricao" placeholder="Descricao"
-                              required></textarea>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_cep" name="cep" placeholder="Cep" required>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_numero" name="numero" placeholder="Numero" required>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_rua" name="rua" placeholder="Rua" required>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_bairro" name="bairro" placeholder="Bairro" required>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_cidade" name="cidade" placeholder="Cidade" required>
-                </div>
-                <div class="form-group">
-                    <input autofocus class="form-control" id="id_estado" name="estado" placeholder="Estado" required>
-                </div>
-                <input type="file" name="imagem" id="id_imagem">
+                {% endfor %}
+
+
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_nome" name="nome" placeholder="Nome" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<textarea autofocus class="form-control" id="id_descricao" name="descricao" placeholder="Descricao"-->
+                              <!--required></textarea>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_cep" name="cep" placeholder="Cep" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_numero" name="numero" placeholder="Numero" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_rua" name="rua" placeholder="Rua" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_bairro" name="bairro" placeholder="Bairro" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_cidade" name="cidade" placeholder="Cidade" required>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input autofocus class="form-control" id="id_estado" name="estado" placeholder="Estado" required>-->
+                <!--</div>-->
+                <!--<input type="file" name="imagem" id="id_imagem">-->
 
                 <div class="form-group">
-                    <button class="btn btn-warning btn-block" type="submit">Adicionar</button>
+                    <button class="btn btn-warning btn-block" type="submit">Salvar</button>
                 </div>
 
                 {% if form.errors %}

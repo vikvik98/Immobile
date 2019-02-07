@@ -5,9 +5,11 @@
 
 <!-- Card -->
 <div class="container container mt-4 mb-5">
-    <h3 class="display-4 text-center"> Imoveis </h3>
+    <h3 class="display-4 text-center" style="margin-top:3.5rem"> Imoveis </h3>
     <hr class="bg-dark mb-4 w-25">
     <div class="row">
+        {% if imoveis.count != 0 %}
+
         {% for imovel in imoveis %}
         <div class="col-md-4">
             <div class="card mb-4">
@@ -21,6 +23,24 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+
+
+        <div class="col-md-12">
+
+
+            <h1 class="text-center">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                Não existe imoveis cadastrados
+
+            </h1>
+        </div>
+        {% endif %}
         <!-- Card -->
     </div>
 </div>
