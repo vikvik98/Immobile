@@ -1,0 +1,79 @@
+{% extends "base_imovel.html" %}
+{% load static %}
+{% block body %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+    <div class="resume text-center">
+        <header class="page-header ">
+            <h1 class="page-title">{{ imovel.nome }}</h1>
+        </header>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading resume-heading">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-xs-12 col-sm-4">
+                                    <figure>
+                                        <img class="img-circle img-responsive" alt="" src="http://placehold.it/300x300">
+                                    </figure>
+
+                                    <div class="row">
+                                        <div class="col-xs-12 social-btns">
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-google">
+                                                    <i class="fa fa-google"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-facebook">
+                                                    <i class="fa fa-facebook"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-twitter">
+                                                    <i class="fa fa-twitter"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-linkedin">
+                                                    <i class="fa fa-linkedin"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-github">
+                                                    <i class="fa fa-github"></i> </a>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-stackoverflow">
+                                                    <i class="fa fa-stack-overflow"></i> </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-8">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Descrição: {{ imovel.descricao }}</li>
+                                        <li class="list-group-item">CEP: {{ imovel.cep }}</li>
+                                        <li class="list-group-item">Bairro: {{ imovel.bairro }} , Numero: {{ imovel.rua }}</li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i>{{ imovel.cidade }} {{ imovel.estado }}</li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i>Tel: {{ imovel.perfil.telefone }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
