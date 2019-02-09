@@ -3,8 +3,15 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-item/blob/master/LICENSE)
  */
+
+html {
+    height:100%;
+}
+
+
 body {
   padding-top: 56px;
+  height:100%;
 }
 
 .card-img-top{
@@ -14,4 +21,12 @@ body {
     align-self: center;
     width: fit-content;
     height: 300px;
+}
+
+/* Select css */
+.container {
+    padding-top: 20px;
+}
+.select2-selection__choice__remove {
+    display: none !important;
 }

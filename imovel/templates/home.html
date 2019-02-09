@@ -2,47 +2,36 @@
 {% load static %}
 {% block body %}
 
-
 <!-- Card -->
-<div class="container container mt-4 mb-5">
-    <h3 class="display-4 text-center" style="margin-top:3.5rem"> Imoveis </h3>
-    <hr class="bg-dark mb-4 w-25">
-    <div class="row">
-        {% if imoveis.count != 0 %}
+<div class="container container mt-4 mb-5 h-100">
+  <h3 class="display-4 text-center"> Imoveis </h3>
+  <hr class="bg-dark mb-4 w-25">
+  <div class="row h-100">
+    {% if imoveis.count != 0 %}
 
-        {% for imovel in imoveis %}
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ imovel.imagem.url }}" style="height: 200px;"
-                     alt="Card image cap">
-                <div class="card-block p-3">
-                    <h4 class="card-title">{{ imovel.nome }}</h4>
-                    <p class="card-text">{{ imovel.descricao }}</p>
-                    <a href="{% url 'item_imovel' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Detalhes</a>
-                </div>
-            </div>
+    {% for imovel in imoveis %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img class="card-img-top" src="{{ MEDIA_URL }}{{ imovel.imagem.url }}" style="height: 200px;"
+             alt="Card image cap">
+        <div class="card-block p-3">
+          <h4 class="card-title">{{ imovel.nome }}</h4>
+          <p class="card-text">{{ imovel.descricao }}</p>
+          <a href="{% url 'item_imovel' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Detalhes</a>
         </div>
-        {% endfor %}
-        {% else %}
-
-
-        <div class="col-md-12">
-
-
-            <h1 class="text-center">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                Não existe imoveis cadastrados
-
-            </h1>
-        </div>
-        {% endif %}
-        <!-- Card -->
+      </div>
     </div>
+    {% endfor %}
+    {% else %}
+
+    <div class="col-md-12 d-flex align-items-center">
+      <h1 class="text-center w-100">
+        Não existe imoveis cadastrados
+      </h1>
+    </div>
+    {% endif %}
+    <!-- Card -->
+  </div>
 </div>
 
 {% endblock %}

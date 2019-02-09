@@ -17,10 +17,11 @@
           <h3 class="card-title">{{ imovel.nome }}</h3>
 
           <!-- Contato -->
-          <h5>Contato: </h5>
+          <h5>Contato(s): </h5>
           {% for perfil in imovel.perfis.all %}
           <b>{{ perfil.nome }} - </b>Telefone: {{ perfil.telefone }}
           <a class="m-5">Email: {{ perfil.email }}</a>
+          <br>
           {% endfor %}
 
           <!-- Descricao -->
@@ -40,6 +41,7 @@
           <h5>Endereço</h5>
         </div>
         <div class="card-body">
+
           <div class="row" style="min-height: 150px;">
             <row class="d-flex justify-content-around" style="min-width: 100%;">
               <div class="col" style="min-width:50%;">
@@ -64,30 +66,17 @@
               </div>
             </row>
           </div>
-<!--
-          <row>
-            <p class="d-flex justify-content-around">
-              <a><b class="pl-3">Rua: </b>{{ imovel.rua }} asdfasdfasdfasdfasdfasdfasdfasdf,</a>
-              <a><b class="pl-3">Nº: </b>{{ imovel.numero }},</a>
-              <a><b class="pl-3">Bairro: </b>{{ imovel.bairro }}</a>
-            </p>
-            <p class="d-flex justify-content-around">
-              <a><b class="pl-3">Cidade: </b>{{ imovel.cidade }},</a>
-              <a><b class="pl-3">UF: </b>{{ imovel.estado }},</a>
-              <a><b class="pl-3">CEP: </b>{{ imovel.cep }}</a>
-            </p>
-          </row>
--->
 
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
           <hr>
-          <p>Lorem.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem .</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <a href="#" class="btn btn-success">Leave a Review</a>
+          {% if request.user.perfil in imovel.perfis.all %}
+          <div class="d-flex justify-content-around">
+            <a href="{% url 'remover_imovel' imovel.id %}"
+               class="btn btn-danger rounded-0 mb-2">Remover</a>
+            <a href="{% url 'editar_imovel' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Editar informações</a>
+            <a href="{% url 'add_proprietario' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Adicionar
+              proprietario</a>
+          </div>
+          {% endif %}
         </div>
       </div>
       <!-- /.card -->
@@ -102,76 +91,9 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    <p class="m-0 text-center text-white">Copyright &copy; Immobile Website 2019</p>
   </div>
 </footer>
 <!-- Footer -->
-
-
-<!--</div>-->
-
-<!--<div class="col-xs-12 col-sm-8">-->
-<!--<ul class="list-group">-->
-<!--<li class="list-group-item">Descrição: {{ imovel.descricao }}</li>-->
-<!--<li class="list-group-item">CEP: {{ imovel.cep }}</li>-->
-<!--<li class="list-group-item">Bairro: {{ imovel.bairro }} , Rua: {{ imovel.rua }}, n-->
-<!--{{ imovel.numero }}-->
-<!--</li>-->
-<!--<li class="list-group-item"><i class="fa fa-phone"></i>{{ imovel.cidade }} {{-->
-<!--imovel.estado }}-->
-<!--</li>-->
-<!--<li class="list-group-item"><i class="fa fa-envelope"></i>Tel: {{-->
-<!--imovel.perfil.telefone }}-->
-<!--</li>-->
-<!--<li class="list-group-item"><i class="fa fa-envelope"></i>Proprietário(s): {{-->
-<!--imovel.perfil_set.all }}-->
-<!--</li>-->
-<!--</ul>-->
-<!--<a href="{% url 'remover_imovel' imovel.id %}"-->
-<!--class="btn btn-primary alert-danger rounded-0 mb-2">Remover</a>-->
-<!--<a href="{% url 'editar_imovel' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Editar</a>-->
-<!--<a href="{% url 'add_proprietario' imovel.id %}" class="btn btn-primary rounded-0 mb-2">Adicionar-->
-<!--proprietario</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<button type="button" class="btn btn-primary" data-toggle="modal"-->
-<!--data-target="#myModal">-->
-<!--Launch demo modal-->
-<!--</button>-->
-
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="modal fade" id="myModal">-->
-<!--<div class="modal-dialog">-->
-<!--<div class="modal-content">-->
-
-<!--&lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--<div class="modal-header">-->
-<!--<h4 class="modal-title">Modal Heading</h4>-->
-<!--<button type="button" class="close" data-dismiss="modal">×</button>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Modal body &ndash;&gt;-->
-<!--<div class="modal-body">-->
-<!--Modal body..-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--<div class="modal-footer">-->
-<!--<button type="button" class="btn btn-danger" data-dismiss="modal">-->
-<!--Close-->
-<!--</button>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
 
 {% endblock %}

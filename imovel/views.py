@@ -4,6 +4,7 @@ from django.views.generic.base import View
 
 from imovel.forms import *
 from imovel.models import Imovel
+from usuario.models import Perfil
 
 
 @login_required
@@ -40,8 +41,6 @@ class AdicionarImovelView(View):
             imovel.perfis.add(perfil_logado)
             imovel.save()
             return redirect('home')
-        for a in request.FILES.keys():
-            print(a)
 
         return render(request, self.template_post, {'form': adicionar_imovelForm})
 
@@ -56,13 +55,9 @@ def editar_imovel(request, id):
         adicionar_imovelForm = AdicionarImovelForm(request.POST, request.FILES, instance=imovel)
 
         if adicionar_imovelForm.is_valid():
-            imovel = adicionar_imovelForm.save()
-            # imovel.perfil = get_perfil_logado(request)
-            # imovel.save()
+            adicionar_imovelForm.save()
 
-            return redirect('perfil_imoveis')
-        # for a in request.FILES.keys():
-        #     print(a)
+            return redirect('item_imovel', id)
 
         return render(request, 'adicionar_imovel.html', {'form': adicionar_imovelForm})
 
@@ -79,16 +74,17 @@ def remover_imovel(request, imovel_id):
 
 def add_proprietario(request, id):
     imovel = Imovel.objects.get(id=id)
+    perfil_list = Perfil.objects.exclude(id__in=imovel.perfis.all())
 
     if request.method == 'GET':
         form = AddPerfilForm()
-        return render(request, 'add_proprietario.html', {'form': form})
+        return render(request, 'add_proprietario.html', {'form': form, 'perfil_list': perfil_list})
 
     else:
         form = AddPerfilForm(request.POST)
 
         if form.is_valid():
             imovel.perfis.add(form.cleaned_data['perfis'][0])
+            return redirect('item_imovel', id)
 
-        return render(request, 'add_proprietario.html', {'form': form})
-
+        return render(request, 'add_proprietario.html', {'form': form, 'perfil_list': perfil_list})
