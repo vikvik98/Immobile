@@ -19,7 +19,7 @@
           <!-- Contato -->
           <h5>Contato(s): </h5>
           {% for perfil in imovel.perfis.all %}
-          <b>{{ perfil.nome }} - </b>Telefone: {{ perfil.telefone }}
+          <b>{{ perfil.nome }} - </b><a href="https://web.whatsapp.com/">Telefone: {{ perfil.telefone }}</a>
           <a class="m-5">Email: {{ perfil.email }}</a>
           <br>
           {% endfor %}
